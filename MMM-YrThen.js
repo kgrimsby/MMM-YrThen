@@ -23,6 +23,7 @@ Module.register('MMM-YrThen', {
             no: "translations/no.json",
             en: "translations/en.json",
             sv: "translations/sv.json",
+            fi: "translations/fi.json",
         }
     },
 
