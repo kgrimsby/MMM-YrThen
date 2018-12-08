@@ -21,6 +21,9 @@ Module.register('MMM-YrThen', {
     getTranslations: function() {
         return {
             no: "translations/no.json",
+            en: "translations/en.json",
+            sv: "translations/sv.json",
+            fi: "translations/fi.json",
         }
     },
 
