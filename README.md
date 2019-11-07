@@ -51,6 +51,11 @@ Find your location using the search form at <a href="https://www.yr.no/nb/liste/
 		<td>Dunno why, but thought it was a good idea to give it some rest before we start. Defaults to 1 sec.</td>
 		<td>1000</td>
 	</tr>
+  <tr>
+		<td>numDays</td>
+		<td>Number of days to show.</td>
+		<td>7</td>
+	</tr>
 	<tr>
 		<td>showAll</td>
 		<td>Show all four periods of each day or not.</td>
