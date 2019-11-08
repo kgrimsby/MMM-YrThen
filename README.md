@@ -72,6 +72,10 @@ Find your location using the search form at <a href="https://www.yr.no/nb/liste/
 		<td>false</td>
 	</tr>
 	<tr>
+		<td>maxMinSeparator</td>
+		<td>If showMaxMin is true, which separator should be used?</td>
+		<td>-</td>
+	<tr>
 		<td>details</td>
 		<td>If showAll is false, show detailed weather forecast? If false, it only shows the forecast around midday (12.00). If true, it shows detailed forecast numDetails times.</td>
 		<td>true</td>
