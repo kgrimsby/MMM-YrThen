@@ -156,7 +156,9 @@ Module.register('MMM-YrThen', {
                         minValue = this.round(newData.temperature.min, 1);
                     }
                     if(this.config.showMaxMin){
-                        if(newData.temperature.min && newData.temperature.max) forecastCell.innerHTML += '<span class="bright small">' + minValue + maxMinSeparator + maxValue + '</span><br>';
+                        if(newData.temperature.min && newData.temperature.max){
+			    forecastCell.innerHTML += '<span class="bright small">' + minValue + this.config.maxMinSeparator + maxValue + '</span><br>';
+			}
                         else forecastCell.innerHTML += ' <span class="bright small">' + tempValue + '</span><br>';
                     }
                     else{
