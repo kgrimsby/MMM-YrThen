@@ -12,7 +12,7 @@ Module.register('MMM-YrThen', {
         details: true,
         detailedPrec: true,
         numDetails: 2,
-        numDays: 7,
+        numDays: 4,
         roundTemp: true,
         roundPrec: false,
         title: 'Værmelding for Skrubblivegen',
@@ -51,8 +51,8 @@ Module.register('MMM-YrThen', {
         this.scheduleUpdate(this.config.initialLoadDelay);
         var self = this;
         setInterval(function() {
-            self.updateDom();
-        }, 1000);
+            self.updateDom(1000);
+        },60000);
     },
 
     round: function(value, precision){
