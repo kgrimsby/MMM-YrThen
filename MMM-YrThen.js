@@ -12,7 +12,7 @@ Module.register('MMM-YrThen', {
         details: true,
         detailedPrec: true,
         numDetails: 2,
-        numDays: 4,
+        numDays: 7,
         roundTemp: true,
         roundPrec: false,
         title: 'Værmelding for Skrubblivegen',
