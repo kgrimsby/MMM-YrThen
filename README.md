@@ -110,4 +110,9 @@ Find your location using the search form at <a href="https://www.yr.no/nb/liste/
 		<td>Show header or not. Contents of header is title.</td>
 		<td>false</td>
 	</tr>
+	<tr>
+		<td>size</td>
+		<td>The size of the text. One of the CSS classes defined in main.css of MagicMirror2: xsmall, small, medium, large, xlarge</td>
+		<td></td>
+	</tr>
 </table>
