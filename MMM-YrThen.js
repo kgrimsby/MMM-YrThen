@@ -157,20 +157,20 @@ Module.register('MMM-YrThen', {
                     }
                     if(this.config.showMaxMin){
                         if(newData.temperature.min && newData.temperature.max){
-			    forecastCell.innerHTML += '<span class="bright small">' + minValue + this.config.maxMinSeparator + maxValue + '</span><br>';
+			    forecastCell.innerHTML += '<span class="bright small">' + minValue + '°' + this.config.maxMinSeparator + maxValue + '°</span><br>';
 			}
-                        else forecastCell.innerHTML += ' <span class="bright small">' + tempValue + '</span><br>';
+                        else forecastCell.innerHTML += ' <span class="bright small">' + tempValue + '°</span><br>';
                     }
                     else{
-                        forecastCell.innerHTML += ' <span class="bright small">' + tempValue + '</span>';
+                        forecastCell.innerHTML += ' <span class="bright small">' + tempValue + '°</span>';
                         if(this.config.showMaxMin){
                             forecastCell.innerHTML += '<br>';
                         }
                         if(newData.temperature.min && newData.temperature.max && this.config.showMaxMin){
-                            forecastCell.innerHTML += '<span class="dimmed">(' + minValue + '/' + maxValue + ')</span><br>';
+                            forecastCell.innerHTML += '<span class="dimmed">(' + minValue + '°/' + maxValue + '°)</span><br>';
                         }
                         else if(!newData.temperature.min && !newData.temperature.max && this.config.showMaxMin){
-                            forecastCell.innerHTML += '<span class="dimmed">(' + tempValue + '/' + tempValue + ')</span><br>';
+                            forecastCell.innerHTML += '<span class="dimmed">(' + tempValue + '°/' + tempValue + '°)</span><br>';
                         }
                     }
                     if(this.config.showPrecipitation){
