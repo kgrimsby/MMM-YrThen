@@ -112,7 +112,7 @@ Find your location using the search form at <a href="https://www.yr.no/nb/liste/
 	</tr>
 	<tr>
 		<td>size</td>
-		<td>The size of the text. One of the CSS classes defined in main.css of MagicMirror2: xsmall, small, medium, large, xlarge</td>
-		<td></td>
+		<td>The size of the text. One of the CSS classes defined in main.css of MagicMirror2: "xsmall", "small", "medium", "large", "xlarge"</td>
+		<td>"small"</td>
 	</tr>
 </table>
