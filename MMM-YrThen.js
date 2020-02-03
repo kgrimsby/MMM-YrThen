@@ -16,7 +16,8 @@ Module.register('MMM-YrThen', {
         roundTemp: true,
         roundPrec: false,
         title: 'Værmelding for Skrubblivegen',
-        header: false
+        header: false,
+        size: "small"
     },
 
     getTranslations: function() {
@@ -65,7 +66,7 @@ Module.register('MMM-YrThen', {
         var wrapper = document.createElement('div');
         if(!this.loaded){
             wrapper.innerHTML = this.translate('loading');
-            wrapper.className = "dimmed light small";
+            wrapper.className = "dimmed light " + this.config.size;
             return wrapper;
         }
 
@@ -75,10 +76,17 @@ Module.register('MMM-YrThen', {
             header.className = 'align-left';
             wrapper.appendChild(header);
         }
-        wrapper.classList.add = "dimmed light small";
+        wrapper.classList.add = "dimmed light " + this.config.size;
 
         var table = document.createElement('table');
-        table.className = "xsmall yrthen-table";
+
+        // Find the size one smaller than size
+        var possibleSizes = ["xsmall", "small", "medium", "large", "xlarge"]
+        var oneSmallerSize = possibleSizes.indexOf(this.config.size) - 1;
+        if (oneSmallerSize < 0) {
+            oneSmallerSize = 0;
+        }
+        table.className = possibleSizes[oneSmallerSize] + " yrthen-table";
 
 // SHOWING DETAILED FORECAST
         if(this.config.showAll == true){
@@ -87,9 +95,17 @@ Module.register('MMM-YrThen', {
             var first = true;
             var timeRow = document.createElement('tr');
             table.appendChild(timeRow);
+
+            // Find the size one smaller than size
+            var possibleSizes = ["xsmall", "small", "medium", "large", "xlarge"]
+            var oneSmallerSize = possibleSizes.indexOf(this.config.size) - 1;
+            if (oneSmallerSize < 0) {
+                oneSmallerSize = 0;
+            }
+
             for(var i = 0; i < 5; i++){
                 var newCell = document.createElement('td');
-                newCell.className = 'align-left bright xsmall yrthen-header';
+                newCell.className = 'align-left bright ' + oneSmallerSize + ' yrthen-header';
                 if(i == 0) newCell.innerHTML = '&nbsp;';
                 if(i == 1) newCell.innerHTML = this.translate("night");
                 if(i == 2) newCell.innerHTML = this.translate("morning");
@@ -157,20 +173,20 @@ Module.register('MMM-YrThen', {
                     }
                     if(this.config.showMaxMin){
                         if(newData.temperature.min && newData.temperature.max){
-			    forecastCell.innerHTML += '<span class="bright small">' + minValue + this.config.maxMinSeparator + maxValue + '</span><br>';
+			    forecastCell.innerHTML += '<span class="bright ' + this.config.size + '">' + minValue + '°' + this.config.maxMinSeparator + maxValue + '°</span><br>';
 			}
-                        else forecastCell.innerHTML += ' <span class="bright small">' + tempValue + '</span><br>';
+                        else forecastCell.innerHTML += ' <span class="bright ' + this.config.size + '">' + tempValue + '°</span><br>';
                     }
                     else{
-                        forecastCell.innerHTML += ' <span class="bright small">' + tempValue + '</span>';
+                        forecastCell.innerHTML += ' <span class="bright ' + this.config.size + '">' + tempValue + '°</span>';
                         if(this.config.showMaxMin){
                             forecastCell.innerHTML += '<br>';
                         }
                         if(newData.temperature.min && newData.temperature.max && this.config.showMaxMin){
-                            forecastCell.innerHTML += '<span class="dimmed">(' + minValue + '/' + maxValue + ')</span><br>';
+                            forecastCell.innerHTML += '<span class="dimmed">(' + minValue + '°/' + maxValue + '°)</span><br>';
                         }
                         else if(!newData.temperature.min && !newData.temperature.max && this.config.showMaxMin){
-                            forecastCell.innerHTML += '<span class="dimmed">(' + tempValue + '/' + tempValue + ')</span><br>';
+                            forecastCell.innerHTML += '<span class="dimmed">(' + tempValue + '°/' + tempValue + '°)</span><br>';
                         }
                     }
                     if(this.config.showPrecipitation){
@@ -236,7 +252,7 @@ Module.register('MMM-YrThen', {
                     var maxTempCell = document.createElement("td");
                     if(this.config.roundTemp) maxTempCell.innerHTML = this.round(newData.temperature.value, 0);
                     else maxTempCell.innerHTML = this.round(newData.temperature.value, 1);
-                    maxTempCell.className = "align-right bright yrthen-temp small";
+                    maxTempCell.className = "align-right bright yrthen-temp " + this.config.size;
                     row.appendChild(maxTempCell);
 
                     var minTempCell = document.createElement("td");
