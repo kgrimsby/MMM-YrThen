@@ -115,4 +115,24 @@ Find your location using the search form at <a href="https://www.yr.no/nb/liste/
 		<td>The size of the text. One of the CSS classes defined in main.css of MagicMirror2: "xsmall", "small", "medium", "large", "xlarge"</td>
 		<td>"small"</td>
 	</tr>
+	<tr>
+		<td>windShow</td>
+		<td>Show wind forecast or not, true or false.</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>windGust</td>
+		<td>Show wind gust information or not, true or false.</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td>windUnit</td>
+		<td>If set, it shows as the unit of the wind. Default could be m/s, but defalt is nothing at all. (string)</td>
+		<td>""</td>
+	</tr>
+	<tr>
+		<td>windSize</td>
+		<td>Size of wind forecast. One of the CSS classes defined in main.css of MagicMirror2: "xsmall", "small", "medium", "large", "xlarge" – or the custom "yrthen-xxsmall" for extra, extra small.</td>
+		<td>"yrthen-xxsmall"</td>
+	</tr>
 </table>
