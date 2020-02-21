@@ -19,6 +19,9 @@ Module.register('MMM-YrThen', {
         windGust: false,
         windUnit: '',
         windSize: 'yrthen-xxsmall',
+        windText: true,
+        windTextNumber: true,
+        windTextNewLine: true,
         title: 'Værmelding for Skrubblivegen',
         header: false,
         size: "small"
@@ -30,6 +33,7 @@ Module.register('MMM-YrThen', {
             en: "translations/en.json",
             sv: "translations/sv.json",
             fi: "translations/fi.json",
+            es: "translations/es.json",
         }
     },
 
@@ -210,9 +214,20 @@ Module.register('MMM-YrThen', {
                         forecastCell.innerHTML += precValue;
                     }
                     if(this.config.windShow){
-                        var windValue = '<br><span class="dimmed ' + this.config.windSize + '">';
-                        windValue += newData.wind.speed + ' ';
-                        if(this.config.windUnit != false) windValue += this.config.windUnit + ' ';
+                        var windValue = '<br><span class="dimmed yrthen-wind-det ' + this.config.windSize + '">';
+                        if(this.config.windText){
+                            windValue += this.calculateWindSpeed(newData.wind.speed);
+                            if(this.config.windTextNumber){
+                                windValue += ' ';
+                                if(this.config.windTextNewLine) windValue += '<br>';
+                                windValue += newData.wind.speed;
+                            }
+                            windValue += ' ';
+                        }
+                        else{
+                            windValue += newData.wind.speed + ' ';
+                            if(this.config.windUnit != false) windValue += this.config.windUnit + ' ';                            
+                        }
                         windValue += this.translate(this.calculateWindDirection(newData.wind.direction));
                         if(this.config.windGust && newData.wind.gust) windValue += ' (' + newData.wind.gust + ' ' + this.translate("gust") + ') ';
                         windValue += '</span>';
@@ -254,8 +269,24 @@ Module.register('MMM-YrThen', {
                     iconCell.appendChild(icon);
         
                     var maxTempCell = document.createElement("td");
-                    if(this.config.roundTemp) maxTempCell.innerHTML = this.round(newData.temperature.value, 0);
-                    else maxTempCell.innerHTML = this.round(newData.temperature.value, 1);
+                    if(this.config.roundTemp){
+                        tempValue = this.round(newData.temperature.value, 0);
+                        maxValue = this.round(newData.temperature.max, 0);
+                        minValue = this.round(newData.temperature.min, 0);
+                    }
+                    else{
+                        tempValue = this.round(newData.temperature.value, 1);
+                        maxValue = this.round(newData.temperature.max, 1);
+                        minValue = this.round(newData.temperature.min, 1);
+                    }
+
+                    if(this.config.showMaxMin){
+                        if(newData.temperature.min && newData.temperature.max) maxTempCell.innerHTML = minValue + '˚' + this.config.maxMinSeparator + maxValue + '˚';
+                        else maxTempCell.innerHTML = tempValue;
+                    }
+                    else{
+                        maxTempCell.innerHTML = tempValue;
+                    }
                     maxTempCell.className = "align-right bright yrthen-temp " + this.config.size;
                     row.appendChild(maxTempCell);
 
@@ -263,11 +294,24 @@ Module.register('MMM-YrThen', {
                     minTempCell.innerHTML = this.round(newData.precipitation.value, 1);
                     minTempCell.className = "align-right yrthen-prec dimmed";
                     row.appendChild(minTempCell);
+
                     if(this.config.windShow){
                         windValue = '';
                         var windCell = document.createElement("td");
-                        windCell.className = "align-left yrthen-prec dimmed " + this.config.windSize;
-                        windValue += newData.wind.speed + ' ';
+                        windCell.className = "align-left yrthen-wind dimmed " + this.config.windSize;
+                        if(this.config.windText){
+                            windValue += this.calculateWindSpeed(newData.wind.speed) + ' ';
+                            if(this.config.windTextNumber){
+                                if(this.config.windTextNewLine) windValue += '<br>';
+                                windValue += newData.wind.speed;
+                                if(this.config.windUnit) windValue += ' ' + this.config.windUnit;
+                                windValue += ' ';
+                            } 
+                        }
+                        else{
+                            windValue += newData.wind.speed + ' ';
+                            if(this.config.windUnit != false) windValue += this.config.windUnit + ' ';                            
+                        }
                         if(this.config.windUnit != false) windValue += this.config.windUnit + ' ';
                         windValue += this.translate(this.calculateWindDirection(newData.wind.direction));
                         if(this.config.windGust && newData.wind.gust) windValue += ' (' + newData.wind.gust + ' ' + this.translate("gust") + ') ';
@@ -339,6 +383,25 @@ Module.register('MMM-YrThen', {
         if(d > 281.25 && d < 303.75) return 'WNW';
         if(d > 303.75 && d < 326.25) return 'NW';
         if(d > 326.25 && d < 348.75) return 'NNW';
+    },
+
+    calculateWindSpeed: function(s){
+        if(!s) return '';
+        var w = '';
+        if(s <= 0.2) return 'windCalm';
+        if(s > 0.2 && s <= 1.5) w = 'windLightAir';
+        if(s > 1.5 && s <= 3.3) w = 'windLightBreeze';
+        if(s > 3.3 && s <= 5.4) w = 'windGentleBreeze';
+        if(s > 5.4 && s <= 7.9) w = 'windModerateBreeze';
+        if(s > 7.9 && s <= 10.7) w = 'windFreshBreeze';
+        if(s > 10.7 && s <= 13.8) w = 'windStrongBreeze';
+        if(s > 13.8 && s <= 17.1) w = 'windModerateGale';
+        if(s > 17.1 && s <= 20.7) w = 'windGale';
+        if(s > 20.7 && s <= 24.4) w = 'windStrongGale';
+        if(s > 24.4 && s <= 28.4) w = 'windStorm';
+        if(s > 28.4 && s <= 32.6) w = 'windViolentStorm';
+        if(s > 32.6) w = 'windHurricaneForce';
+        return this.translate(w);
     },
 
     socketNotificationReceived: function(notification, payload) {

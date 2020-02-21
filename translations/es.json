@@ -4,5 +4,18 @@
     "morning": "Mañana",
     "afternoon": "Tarde",
     "evening": "Velada",
-    "gust": "ráfaga"
+    "gust": "ráfaga",
+    "windCalm": "Calma",
+    "windLightAir": "Ventolina",
+    "windLightBreeze": "Brisa muy débil",
+    "windGentleBreeze": "Brisa ligera",
+    "windModerateBreeze": "Brisa moderada",
+    "windFreshBreeze": "Brisa fresca",
+    "windStrongBreeze": "Brisa fuerte",
+    "windModerateGale": "Viento fuerte",
+    "windGale": "Viento duro",
+    "windStrongGale": "Muy duro",
+    "windStorm": "Temporal",
+    "windViolentStorm": "Borrasca",
+    "windHurricaneForce": "Huracán"
 }

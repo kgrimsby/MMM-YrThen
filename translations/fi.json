@@ -4,5 +4,18 @@
     "morning": "Aamulla",
     "afternoon": "Iltapäivällä",
     "evening": "Illalla",
-    "gust": "Puuska"
+    "gust": "Puuska",
+    "windCalm": "Tyyni",
+    "windLightAir": "Hiljainen tuuli",
+    "windLightBreeze": "Heikko tuuli",
+    "windGentleBreeze": "Heikonlainen tuuli",
+    "windModerateBreeze": "Kohtalainen tuuli",
+    "windFreshBreeze": "Navakka tuuli",
+    "windStrongBreeze": "Kova tuuli",
+    "windModerateGale": "Luja tuuli",
+    "windGale": "Myrskyinen tuuli",
+    "windStrongGale": "Myrsky",
+    "windStorm": "Kova myrsky",
+    "windViolentStorm": "Ankara myrsky",
+    "windHurricaneForce": "Hirmumyrsky"
 }

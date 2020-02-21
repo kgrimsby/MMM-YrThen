@@ -4,5 +4,18 @@
     "morning": "Förm.",
     "afternoon": "Efterm.",
     "evening": "Kväll",
-    "gust": "vindil"
+    "gust": "vindil",
+    "windCalm": "Stiltje",
+    "windLightAir": "Nästan stiltje",
+    "windLightBreeze": "Lätt bris",
+    "windGentleBreeze": "God bris",
+    "windModerateBreeze": "Frisk bris",
+    "windFreshBreeze": "Styv bris",
+    "windStrongBreeze": "Hård bris",
+    "windModerateGale": "Styv kultje",
+    "windGale": "Hård kultje",
+    "windStrongGale": "Halv storm",
+    "windStorm": "Storm",
+    "windViolentStorm": "Svår storm",
+    "windHurricaneForce": "Orkan"
 }

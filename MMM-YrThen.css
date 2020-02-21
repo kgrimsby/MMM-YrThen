@@ -19,18 +19,28 @@
   text-align: center;
 }
 .yrthen-icon-cell {
-  padding-right: 10px;
+  padding-left: 10px;
   text-align: center;
 }
 
 .yrthen-temp {
-  padding-left: 20px;
+  padding-left: 10px;
   padding-right: 0;
 }
 
 .yrthen-prec {
-  padding-left: 20px;
+  padding-left: 10px;
   padding-right: 0;
+}
+
+.yrthen-wind {
+  padding-left: 10px;
+  padding-right: 0;
+  line-height: 0.9rem;
+}
+
+.yrthen-wind-det {
+  line-height: 1rem;
 }
 
 .yrthen-timecell {

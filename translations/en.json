@@ -4,5 +4,18 @@
     "morning": "Morning",
     "afternoon": "Afternoon",
     "evening": "Evening",
-    "gust": "gusts"
+    "gust": "gusts",
+    "windCalm": "Calm",
+    "windLightAir": "Light air",
+    "windLightBreeze": "Light breeze",
+    "windGentleBreeze": "Gentle breeze",
+    "windModerateBreeze": "Moderate breeze",
+    "windFreshBreeze": "Fresh breeze",
+    "windStrongBreeze": "Strong breeze",
+    "windModerateGale": "Moderate gale",
+    "windGale": "Gale",
+    "windStrongGale": "Strong gale",
+    "windStorm": "Storm",
+    "windViolentStorm": "Violent storm",
+    "windHurricaneForce": "Hurricane force"
 }

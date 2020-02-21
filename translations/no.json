@@ -4,5 +4,18 @@
     "morning": "Form.",
     "afternoon": "Etterm.",
     "evening": "Kveld",
-    "gust": "kast"
+    "gust": "kast",
+    "windCalm": "Stille",
+    "windLightAir": "Flau vind",
+    "windLightBreeze": "Svak vind",
+    "windGentleBreeze": "Lett bris",
+    "windModerateBreeze": "Laber bris",
+    "windFreshBreeze": "Frisk bris",
+    "windStrongBreeze": "Liten kuling",
+    "windModerateGale": "Stiv kuling",
+    "windGale": "Sterk kuling",
+    "windStrongGale": "Liten storm",
+    "windStorm": "Full storm",
+    "windViolentStorm": "Sterk storm",
+    "windHurricaneForce": "Orkan"
 }
