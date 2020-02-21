@@ -15,6 +15,10 @@ Module.register('MMM-YrThen', {
         numDays: 7,
         roundTemp: true,
         roundPrec: false,
+        windShow: true,
+        windGust: false,
+        windUnit: '',
+        windSize: 'yrthen-xxsmall',
         title: 'Værmelding for Skrubblivegen',
         header: false,
         size: "small"
@@ -173,21 +177,12 @@ Module.register('MMM-YrThen', {
                     }
                     if(this.config.showMaxMin){
                         if(newData.temperature.min && newData.temperature.max){
-			    forecastCell.innerHTML += '<span class="bright ' + this.config.size + '">' + minValue + '°' + this.config.maxMinSeparator + maxValue + '°</span><br>';
-			}
+                            forecastCell.innerHTML += '<span class="bright ' + this.config.size + '">' + minValue + '°' + this.config.maxMinSeparator + maxValue + '°</span><br>';
+                        }
                         else forecastCell.innerHTML += ' <span class="bright ' + this.config.size + '">' + tempValue + '°</span><br>';
                     }
                     else{
-                        forecastCell.innerHTML += ' <span class="bright ' + this.config.size + '">' + tempValue + '°</span>';
-                        if(this.config.showMaxMin){
-                            forecastCell.innerHTML += '<br>';
-                        }
-                        if(newData.temperature.min && newData.temperature.max && this.config.showMaxMin){
-                            forecastCell.innerHTML += '<span class="dimmed">(' + minValue + '°/' + maxValue + '°)</span><br>';
-                        }
-                        else if(!newData.temperature.min && !newData.temperature.max && this.config.showMaxMin){
-                            forecastCell.innerHTML += '<span class="dimmed">(' + tempValue + '°/' + tempValue + '°)</span><br>';
-                        }
+                        forecastCell.innerHTML += ' <span class="bright ' + this.config.size + '">' + tempValue + '°</span><br>';
                     }
                     if(this.config.showPrecipitation){
                         var precValue = ' <span class="dimmed">(';
@@ -213,6 +208,15 @@ Module.register('MMM-YrThen', {
                         }
                         precValue += ')</span>';
                         forecastCell.innerHTML += precValue;
+                    }
+                    if(this.config.windShow){
+                        var windValue = '<br><span class="dimmed ' + this.config.windSize + '">';
+                        windValue += newData.wind.speed + ' ';
+                        if(this.config.windUnit != false) windValue += this.config.windUnit + ' ';
+                        windValue += this.translate(this.calculateWindDirection(newData.wind.direction));
+                        if(this.config.windGust && newData.wind.gust) windValue += ' (' + newData.wind.gust + ' ' + this.translate("gust") + ') ';
+                        windValue += '</span>';
+                        forecastCell.innerHTML += windValue;
                     }
                     row.appendChild(forecastCell);
                 }
@@ -259,6 +263,17 @@ Module.register('MMM-YrThen', {
                     minTempCell.innerHTML = this.round(newData.precipitation.value, 1);
                     minTempCell.className = "align-right yrthen-prec dimmed";
                     row.appendChild(minTempCell);
+                    if(this.config.windShow){
+                        windValue = '';
+                        var windCell = document.createElement("td");
+                        windCell.className = "align-left yrthen-prec dimmed " + this.config.windSize;
+                        windValue += newData.wind.speed + ' ';
+                        if(this.config.windUnit != false) windValue += this.config.windUnit + ' ';
+                        windValue += this.translate(this.calculateWindDirection(newData.wind.direction));
+                        if(this.config.windGust && newData.wind.gust) windValue += ' (' + newData.wind.gust + ' ' + this.translate("gust") + ') ';
+                        windCell.innerHTML += windValue;
+                        row.appendChild(windCell);
+                    }
                 }
             }
         }
@@ -304,6 +319,26 @@ Module.register('MMM-YrThen', {
             break;
         }
         return id;
+    },
+
+    calculateWindDirection: function(d) {
+        if(!d) return '';
+        if((d < 11.25) || (d > 348.75)) return 'N';
+        if(d > 11.25 && d < 33.75) return 'NNE';
+        if(d > 33.75 && d < 56.25) return 'NE';
+        if(d > 56.25 && d < 78.75) return 'ENE';
+        if(d > 78.75 && d < 101.25) return 'E';
+        if(d > 101.25 && d < 123.75) return 'ESE';
+        if(d > 123.75 && d < 146.25) return 'SE';
+        if(d > 146.25 && d < 168.75) return 'SSE';
+        if(d > 168.75 && d < 191.25) return 'S';
+        if(d > 191.25 && d < 213.75) return 'SSW';
+        if(d > 213.75 && d < 236.25) return 'SW';
+        if(d > 236.25 && d < 258.75) return 'WSW';
+        if(d > 258.75 && d < 281.25) return 'W';
+        if(d > 281.25 && d < 303.75) return 'WNW';
+        if(d > 303.75 && d < 326.25) return 'NW';
+        if(d > 326.25 && d < 348.75) return 'NNW';
     },
 
     socketNotificationReceived: function(notification, payload) {
