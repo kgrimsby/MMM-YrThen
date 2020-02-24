@@ -34,6 +34,7 @@ Module.register('MMM-YrThen', {
             sv: "translations/sv.json",
             fi: "translations/fi.json",
             es: "translations/es.json",
+	    el: "translations/el.json",
         }
     },
 
