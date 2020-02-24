@@ -1,0 +1,21 @@
+{
+    "loading": "Φορτώνει...",
+    "night": "Νύχτα",
+    "morning": "Πρωί",
+    "afternoon": "Απόγευμα",
+    "evening": "Βράδυ",
+    "gust": "Άνεμοι",
+    "windCalm": "Άπνοια",
+    "windLightAir": "Σχεδόν Άπνοια",
+    "windLightBreeze": "Πολύ Ασθενής",
+    "windGentleBreeze": "Ασθενής",
+    "windModerateBreeze": "Σχεδόν Μέτριος",
+    "windFreshBreeze": "Μέτριος",
+    "windStrongBreeze": "Ισχυρός",
+    "windModerateGale": "Σφοδρός",
+    "windGale": "Θυελλώδης",
+    "windStrongGale": "Πολύ θυελλώδης",
+    "windStorm": "θύελλα",
+    "windViolentStorm": "Σφοδρή Θύελλα",
+    "windHurricaneForce": "Τυφώνας"
+}
