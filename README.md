@@ -53,7 +53,7 @@ Find your location using the search form at <a href="https://www.yr.no/nb/liste/
 	</tr>
   <tr>
 		<td>numDays</td>
-		<td>Number of days to show. (Integer)</td>
+		<td>Number of days to show if showAll is true, number of forecasts to show if showAll is false. (Integer)</td>
 		<td>7</td>
 	</tr>
 	<tr>
