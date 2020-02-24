@@ -1,0 +1,21 @@
+{
+    "loading": "Indlæser...",
+    "night": "Nat",
+    "morning": "Form.",
+    "afternoon": "Etterm.",
+    "evening": "Aften",
+    "gust": "Vindstød",
+    "windCalm": "Stille",
+    "windLightAir": "Svag luftning",
+    "windLightBreeze": "Svag vind",
+    "windGentleBreeze": "Let vind",
+    "windModerateBreeze": "Jævn vind",
+    "windFreshBreeze": "Frisk vind",
+    "windStrongBreeze": "Hård vind",
+    "windModerateGale": "Stiv kuling",
+    "windGale": "Hård kuling",
+    "windStrongGale": "Stormende kuling",
+    "windStorm": "Storm",
+    "windViolentStorm": "Stærk storm",
+    "windHurricaneForce": "Orkan"
+}
