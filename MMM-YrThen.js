@@ -36,7 +36,7 @@ Module.register('MMM-YrThen', {
             fr: "translations/fr.json",
             es: "translations/es.json",
             el: "translations/el.json",
-            dk: "translations/dk.json",
+            da: "translations/da.json",
         }
     },
 
