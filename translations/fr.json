@@ -1,0 +1,21 @@
+{
+    "loading": "Chargement...",
+    "night": "Nuit",
+    "morning": "Matin",
+    "afternoon": "Après-midi",
+    "evening": "Soir",
+    "gust": "Rafales",
+    "windCalm": "Calme",
+    "windLightAir": "Très légère brise",
+    "windGentleBreeze": "Légère brise",
+    "windLightBreeze": "Petite brise",
+    "windModerateBreeze": "Jolie brise",
+    "windFreshBreeze": "Bonne brise",
+    "windStrongBreeze": "Vent frais",
+    "windModerateGale": "Grand frais",
+    "windGale": "Coup de vent",
+    "windStrongGale": "Fort coup de vent",
+    "windStorm": "Tempête",
+    "windViolentStorm": "Violente tempête",
+    "windHurricaneForce": "Ouragan"
+}
