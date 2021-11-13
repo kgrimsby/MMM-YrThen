@@ -339,6 +339,7 @@ Module.register('MMM-YrThen', {
         var forecastUrl = printf(printf('%s', this.config.yrApiUrl),this.config.location);
         this.sendSocketNotification('GET_YRTHEN_FORECAST', {
             forecastUrl: forecastUrl,
+	    location: this.config.location,
             config: this.config.updateInterval
         });
         this.scheduleUpdate();
@@ -413,8 +414,10 @@ Module.register('MMM-YrThen', {
     socketNotificationReceived: function(notification, payload) {
         if(notification === 'YRTHEN_FORECAST_DATA') {
             Log.info('Got forecast');
-            this.processForecast(payload.forecast);
-            this.updateDom(1000);
+	    if (payload.location === this.config.location) {
+		this.processForecast(payload.data.forecast);
+		this.updateDom(1000);
+	    }
         }
     },
 

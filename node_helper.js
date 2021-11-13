@@ -26,18 +26,18 @@ module.exports = NodeHelper.create({
 //            console.log("MMM-YrThen " + n + ": Received GET_YRTHEN_FORECAST notification");
             self.config = payload.config;
             self.forecastUrl = payload.forecastUrl;
-            this.getForecastFromYrThen();
+            this.getForecastFromYrThen(payload.forecastUrl, payload.location);
         }
     },
 
-    getForecastFromYrThen: function() {
+    getForecastFromYrThen: function(url, location) {
         var d = new Date();
         var n = d.toLocaleDateString() + " " + d.toLocaleTimeString();
 //        console.log("MMM-YrThen " + n + ": Getting forecast");
         var self = this;
         var locationData = {};
 
-        request({url: self.forecastUrl, method: 'GET'}, function(error, response, message) {
+        request({url: url, method: 'GET'}, function(error, response, message) {
             var d = new Date();
             var n = d.toLocaleDateString() + " " + d.toLocaleTimeString();
 //            console.log("MMM-YrThen " + n + ": Requesting forecast from" + self.forecastUrl);
@@ -46,7 +46,7 @@ module.exports = NodeHelper.create({
                 var d = new Date();
                 var n = d.toLocaleDateString() + " " + d.toLocaleTimeString();
 //                console.log("MMM-YrThen " + n + ": Returning forecast");
-                self.sendSocketNotification('YRTHEN_FORECAST_DATA', locationData);
+                self.sendSocketNotification('YRTHEN_FORECAST_DATA', { location: location, data: locationData});
             }
             else{
                 var d = new Date();
